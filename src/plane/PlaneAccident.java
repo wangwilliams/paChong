@@ -138,4 +138,33 @@ public class PlaneAccident {
             System.out.println(maxTime+" : "+maxCount);
         }
     }
+
+    public static void MaximumSuvival(){
+        Map<String,Float> map = new HashMap<>();
+        float suvival = 0;
+        for (String data:allData){
+            try {
+                String[] strs = data.split(",");
+                float m = Float.parseFloat(strs[10]);
+                float n = Float.parseFloat(strs[9]);
+                suvival = 1-m/n;
+                map.put(data,suvival);
+            }catch (Exception e){
+
+            }
+
+            float max_Suvial = 0;
+            String this_data = "null";
+            Set<String> keySet = map.keySet();
+            for (String datq:keySet){
+                if (map.get(datq) > max_Suvial){
+                    max_Suvial = map.get(datq);
+                    this_data = data;
+                }
+            }
+
+            System.out.println("幸存者最高的事故是: "+this_data);
+            System.out.println("幸存率为: "+suvival);
+        }
+    }
 }
